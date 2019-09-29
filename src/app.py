@@ -5,13 +5,13 @@ from wsgi import WebApp
 app = WebApp()
 
 
-@app.route("/home")
+@app.map_urls.route("/home")
 def home(request, response):
     response.data = 'From Home'
     return response
 
 
-@app.route("/product/{id}")
+@app.map_urls.route("/product/{id}")
 def home(request, response, id):
     response.data = 'Product with id: {}'.format(id)
     return response

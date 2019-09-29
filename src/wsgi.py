@@ -1,30 +1,18 @@
 # -*- coding: utf8 -*-
-import parse
 from werkzeug.wrappers import Request, Response
+
+from route import Router
 
 
 class WebApp(object):
     def __init__(self):
-        self.routes = {}
-
-    def route(self, path):
-        def wrapper(handler):
-            self.routes[path] = handler
-            return handler
-        return wrapper
+        self.map_urls = Router()
 
     def response_404(self, request, response):
         response.data = "Oups this page is not found 404"
         return response
 
-    def find_hundler(self, request_path):
-        for path, handler in self.routes.items():
-            parse_result = parse.parse(path, request_path)
-            if parse_result is not None:
-                return handler, parse_result.named
-        return False, False
-
-    def build_response(self, handler, kwargs, request, response):
+    def _build_response(self, handler, kwargs, request, response):
         if handler:
             return handler(request, response, **kwargs)
         else:
@@ -32,8 +20,8 @@ class WebApp(object):
 
     def hundle_request(self, request):
         response = Response()
-        handler, kwargs = self.find_hundler(request.path)
-        response = self.build_response(handler, kwargs, request, response)
+        handler, kwargs = self.map_urls.find_hundler(request.path)
+        response = self._build_response(handler, kwargs, request, response)
         return response
 
     def wsgi_app(self, environ, start_response):
