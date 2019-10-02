@@ -1,5 +1,14 @@
 # -*- coding: utf8 -*-
 import argparse
+import os
+import subprocess
+import sys
+
+if not os.environ.get("selframe", False):
+    selframe_env = os.environ.copy()
+    selframe_env['selframe'] = r"C:\Users\Rami\Desktop\selframe\selframe"
+    command = ['sqsub', '-np', sys.argv[1], '/homedir/anotherdir/executable']
+    subprocess.check_call(command, env=selframe_env)
 
 parser = argparse.ArgumentParser(
     prog="selframe",
@@ -40,3 +49,8 @@ start_group.add_argument(
 )
 
 args = parser.parse_args()
+
+if args.keyword == "start":
+    exec(open(r'selframe\app.py').read())
+else:
+    print("Nothing")
