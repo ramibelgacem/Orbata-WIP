@@ -40,9 +40,3 @@ start_group.add_argument(
 )
 
 args = parser.parse_args()
-if args.keyword == "build":
-    print("You want to build a project")
-if args.keyword == "start":
-    print("You want to build a project")
-if args.port:
-    print("Port")

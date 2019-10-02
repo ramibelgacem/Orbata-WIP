@@ -1,2 +1,2 @@
 # Selframe
-A Python MicroFramework For Noob Learners
+A Python Web Framework For Noob Learners
