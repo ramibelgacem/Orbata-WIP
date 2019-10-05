@@ -29,7 +29,7 @@ python setup.py develop
 ## Quick start
 Generate a sample
 ```bash
-selframe build project_name
+selframe build --name=project_name
 ```
 Or Create a file called app.py in your new project folder
 ```python
