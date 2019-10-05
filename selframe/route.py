@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
-from exceptions import DuplicateRoute
-
 import parse
+
+from .exceptions import DuplicateRoute
 
 
 class Router(object):

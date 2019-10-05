@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 from werkzeug.wrappers import Request, Response
 
-from route import Router
+from .route import Router
 
 
 class WebApp(object):

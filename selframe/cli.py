@@ -1,14 +1,9 @@
 # -*- coding: utf8 -*-
 import argparse
 import os
-import subprocess
 import sys
 
-if not os.environ.get("selframe", False):
-    selframe_env = os.environ.copy()
-    selframe_env['selframe'] = r"C:\Users\Rami\Desktop\selframe\selframe"
-    command = ['sqsub', '-np', sys.argv[1], '/homedir/anotherdir/executable']
-    subprocess.check_call(command, env=selframe_env)
+from .exceptions import AppFileNotDefined
 
 parser = argparse.ArgumentParser(
     prog="selframe",
@@ -50,7 +45,34 @@ start_group.add_argument(
 
 args = parser.parse_args()
 
-if args.keyword == "start":
-    exec(open(r'selframe\app.py').read())
-else:
-    print("Nothing")
+
+def main():
+    current_path = os.getcwd()
+    if args.keyword == "start":
+        try:
+            sys.path.append(os.path.abspath(current_path))
+            from app import app
+        except ModuleNotFoundError:
+            raise AppFileNotDefined(
+                """
+                You must execute selframe command from your directory
+                and you must define a file named app that contains your views
+            """)
+
+        from werkzeug.serving import run_simple
+        run_simple(
+            args.host or '127.0.0.1',
+            args.port or 5000,
+            app, use_reloader=True, use_debugger=True
+        )
+
+    if args.keyword == "build":
+        target_path = current_path + '\\' + (args.name or 'sample')
+        os.makedirs(target_path)
+        with open(target_path + '\\app.py', "w") as f:
+            from .sample import sample
+            f.write(sample)
+
+
+if __name__ == '__main__':
+    main()
