@@ -2,6 +2,7 @@
 from werkzeug.wrappers import Request, Response
 
 from .route import Router
+from .logging import logger
 
 
 class WebApp(object):
@@ -14,6 +15,7 @@ class WebApp(object):
 
     def _build_response(self, handler, kwargs, request, response):
         if handler:
+            logger.info("Calling route {}".format(handler.__name__))
             return handler(request, response, **kwargs)
         else:
             return self.response_404(request, response)

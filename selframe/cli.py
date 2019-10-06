@@ -3,6 +3,7 @@ import argparse
 import os
 import sys
 
+from .logging import logger
 from .exceptions import AppFileNotDefined
 
 
@@ -14,7 +15,7 @@ class CliBase(object):
 
 class CliBuild(CliBase):
     def _execute(self):
-        print("Building the project called {}".format(self.path))
+        logger.info("Building the project called {}".format(self.path))
         target_path = self.path + '\\' + (self.args.name or 'sample')
         os.makedirs(target_path)
         with open(target_path + '\\app.py', "w") as f:
@@ -24,6 +25,7 @@ class CliBuild(CliBase):
 
 class CliStart(CliBase):
     def _execute(self):
+        logger.info("The server will begin")
         try:
             sys.path.append(os.path.abspath(self.path))
             from app import app

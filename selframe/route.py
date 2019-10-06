@@ -2,6 +2,7 @@
 import parse
 
 from .exceptions import DuplicateRoute
+from .logging import logger
 
 
 class Router(object):
@@ -14,6 +15,7 @@ class Router(object):
                 raise DuplicateRoute(
                     "This route {} is duplicated".format(path))
             self.routes[path] = handler
+            logger.info("Adding the route {}".format(path))
             return handler
         return wrapper
 

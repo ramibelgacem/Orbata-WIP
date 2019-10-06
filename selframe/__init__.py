@@ -10,5 +10,6 @@
 """
 
 from .wsgi import WebApp
+from .logging import logger
 
 __version__ = "1.0.0"
