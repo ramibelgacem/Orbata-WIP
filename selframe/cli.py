@@ -2,6 +2,7 @@
 import argparse
 import os
 import sys
+import importlib
 
 from .logging import logger
 from .exceptions import AppFileNotDefined
@@ -28,7 +29,13 @@ class CliStart(CliBase):
         logger.info("The server will begin")
         try:
             sys.path.append(os.path.abspath(self.path))
-            from app import app
+            from __discipline__ import VIEWS_DIR, MODELS_DIR, TEMPLATES_DIR, STATIC_DIR
+
+            for views in VIEWS_DIR:
+                importlib.import_module(views)
+                # for root, dirs, files in os.walk(self.path + '\\' + views, topdown=True):
+                #     for file_name in files:
+
         except ModuleNotFoundError:
             raise AppFileNotDefined(
                 """
