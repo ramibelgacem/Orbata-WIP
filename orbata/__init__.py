@@ -9,9 +9,6 @@
     :license: BSD-3-Clause
 """
 
-from . import wsgi
-from . import exceptions
-from . import logging
-from . import route
+from . import exceptions, logging, route, wsgi
 
 __version__ = "1.0.0"

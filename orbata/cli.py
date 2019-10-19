@@ -1,11 +1,11 @@
 # -*- coding: utf8 -*-
 import argparse
+import importlib
 import os
 import sys
-import importlib
 
-from .logging import logger
 from .exceptions import AppFileNotDefined
+from .logging import logger
 
 
 class CliBase(object):
