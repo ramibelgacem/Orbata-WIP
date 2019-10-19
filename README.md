@@ -1,4 +1,4 @@
-# Selframe
+# Orbata
 A web framework based on Werkzeug. 
 The goal here is to learn how a web framework works
 and apply best pratices along with OOP and design patterns (Hopefully).
@@ -9,11 +9,11 @@ This work is inspired by Jahongir Rahmonov [tutorial](http://rahmonov.me/posts/w
 Clone the repos
 
 ```bash
-git clone https://github.com/ramibelgacem/Selframe.git
+git clone https://github.com/ramibelgacem/orbata.git
 ```
-Move to selframe folder
+Move to orbata folder
 ```bash
-cd selframe
+cd orbata
 ```
 Create a virtual environnement and execute it
 ```bash
@@ -30,12 +30,12 @@ python setup.py develop
 ## Quick start
 Generate a sample
 ```bash
-selframe build --name=project_name
+orbata build --name=project_name
 ```
 Or Create a file called app.py in your new project folder
 ```python
 # -*- coding: utf8 -*-
-from selframe import WebApp
+from orbata import WebApp
 
 app = WebApp()
 
@@ -49,7 +49,7 @@ def home(request, response):
 Run the server
 ```bash
 cd project_name
-selframe start
+orbata start
 ```
 
 ## Contributing

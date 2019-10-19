@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    selframe
+    Orbata
     ~~~~~
     A web framework based on Werkzeug. 
     The goal here is to learn how a web framework work

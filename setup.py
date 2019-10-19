@@ -7,14 +7,14 @@ from setuptools import setup
 with io.open("README.md", "rt", encoding="utf8") as f:
     readme = f.read()
 
-with io.open("selframe/__init__.py", "rt", encoding="utf8") as f:
+with io.open("orbata/__init__.py", "rt", encoding="utf8") as f:
     version = re.search(r'__version__ = "(.*?)"', f.read()).group(1)
 
 setup(
-    name="Selframe",
+    name="orbata",
     version=version,
     project_urls={
-        "Code": "https://github.com/ramibelgacem/Selframe",
+        "Code": "https://github.com/ramibelgacem/orbata",
     },
     license="BSD-3-Clause",
     author="Rami BELGACEM",
@@ -24,8 +24,8 @@ setup(
     description="A simple framework for learning perpose.",
     long_description=readme,
     # TODO
-    # packages=find_packages("selframe"),
-    # package_dir={"": "selframe"},
+    # packages=find_packages("orbata"),
+    # package_dir={"": "orbata"},
     # include_package_data=True,
     # python_requires="!=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
     # install_requires=[
@@ -76,7 +76,7 @@ setup(
     # },
     entry_points={
         "console_scripts": [
-            "selframe = selframe.cli:main"
+            "orbata = orbata.cli:main"
         ]
     },
 )

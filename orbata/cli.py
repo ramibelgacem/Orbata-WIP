@@ -39,7 +39,7 @@ class CliStart(CliBase):
         except ModuleNotFoundError:
             raise AppFileNotDefined(
                 """
-                You must execute selframe command from your directory
+                You must execute orbata command from your directory
                 and you must define a file named app that contains your views
             """)
 
@@ -59,9 +59,9 @@ cli_factory = {
 
 def build_commands():
     parser = argparse.ArgumentParser(
-        prog="selframe",
+        prog="orbata",
         usage='%(prog)s [options] keyword',
-        description="Selframe command line application",
+        description="Orbata command line application",
         epilog="Code well!",
         allow_abbrev=False,
     )

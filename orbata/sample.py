@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
 sample = """# -*- coding: utf8 -*-
-from selframe import WebApp
+from orbata import WebApp
 
 app = WebApp()
 
