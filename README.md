@@ -3,7 +3,7 @@ A web framework based on Werkzeug.
 The goal here is to learn how a web framework works
 and apply best pratices along with OOP and design patterns (Hopefully).
 
-This work is inspired by Jahongir Rahmonov [tutorial](http://rahmonov.me/posts/write-python-framework-part-one/) and [Flask](https://github.com/pallets/flask) web framework project.
+This work is inspired by Jahongir Rahmonov's [tutorial](http://rahmonov.me/posts/write-python-framework-part-one/) and [Flask](https://github.com/pallets/flask) web framework project.
 
 ## Installing
 Clone the repos
@@ -35,16 +35,20 @@ orbata build --name=project_name
 Or Create a file called app.py in your new project folder
 ```python
 # -*- coding: utf8 -*-
-from orbata import WebApp
+from orbata.wsgi import WebApp
 
 app = WebApp()
 
 
 @app.map_urls.route("/home")
 def home(request, response):
-    # A a example of hello world.
-    response.data = 'Hello world!'
+    # An example of hello world.
+    response.data = 'Hello world!!!!'
     return response
+
+
+if __name__ == '__main__':
+    app.run()
 ```
 Run the server
 ```bash
