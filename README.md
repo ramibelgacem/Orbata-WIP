@@ -49,7 +49,7 @@ def home(request, response):
 Run the server
 ```bash
 cd project_name
-orbata start
+python app.py
 ```
 
 ## Contributing

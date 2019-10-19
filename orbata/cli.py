@@ -27,28 +27,22 @@ class CliBuild(CliBase):
 class CliStart(CliBase):
     def _execute(self):
         logger.info("The server will begin")
-        try:
-            sys.path.append(os.path.abspath(self.path))
-            from __discipline__ import VIEWS_DIR, MODELS_DIR, TEMPLATES_DIR, STATIC_DIR
+        # try:
+        #     sys.path.append(os.path.abspath(self.path))
+        #     from __discipline__ import VIEWS_DIR, MODELS_DIR, TEMPLATES_DIR, STATIC_DIR
 
-            for views in VIEWS_DIR:
-                importlib.import_module(views)
-                # for root, dirs, files in os.walk(self.path + '\\' + views, topdown=True):
-                #     for file_name in files:
+        #     for views in VIEWS_DIR:
+        #         importlib.import_module(views)
+        #         for root, dirs, files in os.walk(self.path + '\\' + views, topdown=True):
+        #             for file_name in files:
+        #                 pass
 
-        except ModuleNotFoundError:
-            raise AppFileNotDefined(
-                """
-                You must execute orbata command from your directory
-                and you must define a file named app that contains your views
-            """)
-
-        from werkzeug.serving import run_simple
-        run_simple(
-            self.args.host or '127.0.0.1',
-            self.args.port or 5000,
-            app, use_reloader=True, use_debugger=True
-        )
+        # except ModuleNotFoundError:
+        #     raise AppFileNotDefined(
+        #         """
+        #         You must execute orbata command from your directory
+        #         and you must define a file named app that contains your views
+        #     """)
 
 
 cli_factory = {
