@@ -27,6 +27,9 @@ class CliBuild(CliBase):
 class CliStart(CliBase):
     def _execute(self):
         logger.info("The server will begin")
+        print(self.path)
+        __import__(self.path)
+        print(app)
         # try:
         #     sys.path.append(os.path.abspath(self.path))
         #     from __discipline__ import VIEWS_DIR, MODELS_DIR, TEMPLATES_DIR, STATIC_DIR
